@@ -12,8 +12,12 @@ export const getPosts = async () => {
 
 export const getPostBySlug = async (id) => {
 
-    //TODO: BUSCAR UM POST EM ESPECIFICO.
-    //const {data} = await api.get(`/post?id=eq.${id}`)
+    const post = await getPosts();
+    const foundPost = post.find((post) => post.id === id);
 
-    return {}
+    if (foundPost) {
+        return foundPost;
+    }
+
+    return { title: "Sua postagem infelizmente não foi encontrada" };
 }
